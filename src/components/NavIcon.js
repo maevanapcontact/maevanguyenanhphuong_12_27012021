@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -29,5 +30,11 @@ class NavIcon extends Component {
     );
   }
 }
+
+NavIcon.propTypes = {
+  path: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
+};
 
 export default NavIcon;

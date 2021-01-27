@@ -5,7 +5,7 @@ import NavIcon from "./NavIcon";
 
 const NAV = styled.nav`
   width: 120px;
-  height: calc(100vh - 90px);
+  height: 100vh;
   background: #000;
   padding: 60px 30px;
   position: relative;
