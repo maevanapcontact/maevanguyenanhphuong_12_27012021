@@ -1,39 +1,64 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "../css/TopNav.css";
+import styled from "styled-components";
+
+const NAV = styled.nav`
+  background: #000;
+  padding: 18px 87px 14px 29px;
+`;
+
+const UL = styled.ul`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const IMG = styled.img`
+  width: 178px;
+`;
+
+const LINK = styled(Link)`
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.2rem;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
 
 class TopNav extends Component {
   render() {
     return (
-      <nav className="top-nav">
-        <ul>
+      <NAV>
+        <UL>
           <li>
-            <Link to="/user" title="Homepage">
-              <img src="./images/logo.png" alt="SportSee" />
-            </Link>
+            <LINK to="/user" title="Homepage">
+              <IMG src="./images/logo.png" alt="SportSee" />
+            </LINK>
           </li>
           <li>
-            <Link to="/user" title="User Page">
+            <LINK to="/user" title="User Page">
               Accueil
-            </Link>
+            </LINK>
           </li>
           <li>
-            <Link to="/user" title="User Page">
+            <LINK to="/user" title="User Page">
               Profil
-            </Link>
+            </LINK>
           </li>
           <li>
-            <Link to="/user" title="User Page">
+            <LINK to="/user" title="User Page">
               Réglages
-            </Link>
+            </LINK>
           </li>
           <li>
-            <Link to="/user" title="User Page">
+            <LINK to="/user" title="User Page">
               Communauté
-            </Link>
+            </LINK>
           </li>
-        </ul>
-      </nav>
+        </UL>
+      </NAV>
     );
   }
 }

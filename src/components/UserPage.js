@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "../css/UserPage.css";
 
 import TopNav from "./TopNav";
 
