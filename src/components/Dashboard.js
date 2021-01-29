@@ -1,5 +1,11 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import {
+  getUserDetails,
+  getUserActivity,
+  getUserAverageSession,
+  getUserPerformance,
+} from "../userAPI";
 
 import DataTag from "./DataTag";
 
@@ -71,6 +77,20 @@ const GRAPH = styled.div`
 `;
 
 class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: "",
+    };
+  }
+
+  componentDidMount() {
+    getUserDetails();
+    getUserActivity();
+    getUserAverageSession();
+    getUserPerformance();
+  }
+
   render() {
     return (
       <CONTAINER>
