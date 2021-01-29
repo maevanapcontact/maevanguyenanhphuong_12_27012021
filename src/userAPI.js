@@ -1,28 +1,56 @@
-const getUserDetails = () => {
-  fetch("http://localhost:3000/user/12")
+/**
+ * Fetch the user details from the server
+ *
+ * @param   {func}  resolve  The function to fires if the request is a success
+ *
+ * @return  {void}
+ */
+const getUserDetails = (resolve) => {
+  fetch("http://localhost:3000/user/18")
     .then((response) => response.json())
-    .then((result) => console.log("Success: ", result.data))
+    .then((result) => resolve(result.data))
     .catch((error) => console.log("Error: ", error));
 };
 
-const getUserActivity = () => {
-  fetch("http://localhost:3000/user/12/activity")
+/**
+ * Fetch the user activity from the server
+ *
+ * @param   {func}  resolve  The function to fires if the request is a success
+ *
+ * @return  {void}
+ */
+const getUserActivity = (resolve) => {
+  fetch("http://localhost:3000/user/18/activity")
     .then((response) => response.json())
-    .then((result) => console.log("Success: ", result.data))
+    .then((result) => resolve(result.data))
     .catch((error) => console.log("Error: ", error));
 };
 
-const getUserAverageSession = () => {
-  fetch("http://localhost:3000/user/12/average-sessions")
+/**
+ * Fetch the user average session from the server
+ *
+ * @param   {func}  resolve  The function to fires if the request is a success
+ *
+ * @return  {void}
+ */
+const getUserAverageSession = (resolve) => {
+  fetch("http://localhost:3000/user/18/average-sessions")
     .then((response) => response.json())
-    .then((result) => console.log("Success: ", result.data))
+    .then((result) => resolve(result.data))
     .catch((error) => console.log("Error: ", error));
 };
 
-const getUserPerformance = () => {
-  fetch("http://localhost:3000/user/12/performance")
+/**
+ * Fetch the user performance from the server
+ *
+ * @param   {func}  resolve  The function to fires if the request is a success
+ *
+ * @return  {void}
+ */
+const getUserPerformance = (resolve) => {
+  fetch("http://localhost:3000/user/18/performance")
     .then((response) => response.json())
-    .then((result) => console.log("Success: ", result.data))
+    .then((result) => resolve(result.data))
     .catch((error) => console.log("Error: ", error));
 };
 

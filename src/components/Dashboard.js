@@ -80,23 +80,70 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: "",
+      id: "",
+      firstName: "",
+      todayScore: "",
+      keyData: {},
+      sessions: [],
+      averageSessions: [],
+      kind: {},
+      data: [],
     };
+    this.updateUserDetails = this.updateUserDetails.bind(this);
+    this.updateUserActivity = this.updateUserActivity.bind(this);
+    this.updateUserAverageSession = this.updateUserAverageSession.bind(this);
+    this.updateUserPerformance = this.updateUserPerformance.bind(this);
   }
 
   componentDidMount() {
-    getUserDetails();
-    getUserActivity();
-    getUserAverageSession();
-    getUserPerformance();
+    getUserDetails(this.updateUserDetails);
+    getUserActivity(this.updateUserActivity);
+    getUserAverageSession(this.updateUserAverageSession);
+    getUserPerformance(this.updateUserPerformance);
+  }
+
+  updateUserDetails(data) {
+    this.setState({
+      id: data.id,
+      firstName: data.userInfos.firstName,
+      todayScore: data.todayScore,
+      keyData: data.keyData,
+    });
+  }
+
+  updateUserActivity(data) {
+    this.setState({
+      sessions: data.sessions,
+    });
+  }
+
+  updateUserAverageSession(data) {
+    this.setState({
+      averageSessions: data.sessions,
+    });
+  }
+
+  updateUserPerformance(data) {
+    this.setState({
+      kind: data.kind,
+      data: data.data,
+    });
   }
 
   render() {
+    const { firstName, keyData } = this.state;
+    const {
+      calorieCount,
+      proteinCount,
+      carbohydrateCount,
+      lipidCount,
+    } = keyData;
+
     return (
       <CONTAINER>
         <HEADER>
           <h1>
-            Bonjour <NAME>Thomas</NAME>
+            Bonjour <NAME>{firstName}</NAME>
           </h1>
           <span>Félicitation ! Vous avez explosé vos objectifs hier 👏</span>
         </HEADER>
@@ -113,28 +160,28 @@ class Dashboard extends Component {
             <DataTag
               src="./images/energy.png"
               title="Energy"
-              data="1.930kCal"
+              data={`${calorieCount}kCal`}
               type="Calories"
               color="#fbeaea"
             />
             <DataTag
               src="./images/chicken.png"
               title="Protéines"
-              data="155g"
+              data={`${proteinCount}g`}
               type="Protéines"
               color="#e9f4fb"
             />
             <DataTag
               src="./images/apple.png"
               title="Glucides"
-              data="290g"
+              data={`${carbohydrateCount}g`}
               type="Glucides"
               color="#fbf6e5"
             />
             <DataTag
               src="./images/cheeseburger.png"
               title="Lipides"
-              data="50g"
+              data={`${lipidCount}g`}
               type="Lipides"
               color="#fbeaef"
             />
