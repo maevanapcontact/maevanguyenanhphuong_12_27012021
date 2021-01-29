@@ -8,6 +8,7 @@ import {
 } from "../userAPI";
 
 import DataTag from "./DataTag";
+import ChartWeight from "./ChartWeight";
 
 const CONTAINER = styled.div`
   padding: 60px 0;
@@ -61,13 +62,6 @@ const CONTENT = styled.div`
 const GROUP = styled.div`
   display: flex;
   justify-content: space-between;
-`;
-
-const LARGEGRAPH = styled.div`
-  width: 835px;
-  height: 320px;
-  border: 1px solid #000;
-  margin-bottom: 28px;
 `;
 
 const GRAPH = styled.div`
@@ -131,7 +125,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { firstName, keyData } = this.state;
+    const { firstName, keyData, sessions } = this.state;
     const {
       calorieCount,
       proteinCount,
@@ -149,7 +143,7 @@ class Dashboard extends Component {
         </HEADER>
         <CONTENT>
           <section>
-            <LARGEGRAPH></LARGEGRAPH>
+            <ChartWeight sessions={sessions} />
             <GROUP>
               <GRAPH></GRAPH>
               <GRAPH></GRAPH>
