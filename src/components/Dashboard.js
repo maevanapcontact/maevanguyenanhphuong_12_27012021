@@ -8,7 +8,10 @@ import {
 } from "../userAPI";
 
 import DataTag from "./DataTag";
-import ChartWeight from "./ChartWeight";
+import ChartActivity from "./ChartActivity";
+import ChartGoals from "./ChartGoals";
+import ChartKPI from "./ChartKPI";
+import ChartRadar from "./ChartRadar";
 
 const CONTAINER = styled.div`
   padding: 60px 0;
@@ -64,24 +67,13 @@ const GROUP = styled.div`
   justify-content: space-between;
 `;
 
-const GRAPH = styled.div`
-  width: 258px;
-  height: 263px;
-  border: 1px solid #000;
-`;
-
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       id: "",
       firstName: "",
-      todayScore: "",
       keyData: {},
-      sessions: [],
-      averageSessions: [],
-      kind: {},
-      data: [],
     };
     this.updateUserDetails = this.updateUserDetails.bind(this);
     this.updateUserActivity = this.updateUserActivity.bind(this);
@@ -125,7 +117,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { firstName, keyData, sessions } = this.state;
+    const { firstName, keyData } = this.state;
     const {
       calorieCount,
       proteinCount,
@@ -143,11 +135,11 @@ class Dashboard extends Component {
         </HEADER>
         <CONTENT>
           <section>
-            <ChartWeight sessions={sessions} />
+            <ChartActivity />
             <GROUP>
-              <GRAPH></GRAPH>
-              <GRAPH></GRAPH>
-              <GRAPH></GRAPH>
+              <ChartGoals />
+              <ChartRadar />
+              <ChartKPI />
             </GROUP>
           </section>
           <aside>

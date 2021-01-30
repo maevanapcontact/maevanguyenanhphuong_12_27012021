@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import PropTypes from "prop-types";
 import * as d3 from "d3";
+
+import { getUserActivity } from "../userAPI";
 
 const CONTAINER = styled.div`
   background: #fbfbfb;
@@ -9,6 +10,7 @@ const CONTAINER = styled.div`
   height: 320px;
   border-radius: 5px;
   padding: 24px 30px;
+  margin-bottom: 28px;
 `;
 
 const HEADER = styled.header`
@@ -42,15 +44,36 @@ const ROUND = styled.div`
   margin: 0 10px;
 `;
 
-class ChartWeight extends Component {
+class ChartActivity extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      id: "",
+      sessions: [],
+    };
+
+    this.updateUserActivity = this.updateUserActivity.bind(this);
+    this.updateChart = this.updateChart.bind(this);
+
     this.chart = React.createRef();
   }
 
   componentDidMount() {
-    const { sessions } = this.props;
-    console.log(sessions);
+    getUserActivity(this.updateUserActivity);
+  }
+
+  updateUserActivity(data) {
+    this.setState({
+      id: data.userId,
+      sessions: data.sessions,
+    });
+    this.updateChart();
+  }
+
+  updateChart() {
+    const { id, sessions } = this.state;
+    console.log("Chart Activity: ", id);
+    console.log("Chart Activity: ", sessions);
 
     const chartElt = d3
       .select(this.chart.current)
@@ -64,15 +87,13 @@ class ChartWeight extends Component {
       .enter()
       .append("rect")
       .attr("x", (elt, index) => index * 84)
-      .attr("y", (elt, index) => 270 - 100 * (elt.kilogram - 68))
+      .attr("y", (elt, index) => 250)
       .attr("width", 7)
-      .attr("height", (elt, index) => (elt.kilogram - 68) * 270)
+      .attr("height", (elt, index) => (elt.kilogram - 68) * 100)
       .attr("fill", "#000");
   }
 
   render() {
-    // return <div ref={this.myRef}>Testing Refs</div>;
-
     return (
       <CONTAINER>
         <HEADER>
@@ -94,8 +115,4 @@ class ChartWeight extends Component {
   }
 }
 
-ChartWeight.propTypes = {
-  sessions: PropTypes.array.isRequired,
-};
-
-export default ChartWeight;
+export default ChartActivity;
