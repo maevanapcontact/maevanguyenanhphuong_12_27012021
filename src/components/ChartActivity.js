@@ -79,17 +79,41 @@ class ChartActivity extends Component {
       .select(this.chart.current)
       .append("svg")
       .attr("width", 770)
-      .attr("height", 270);
+      .attr("height", 270)
+      .append("g")
+      .attr("transform", "translate(" + 35 + "," + 100 + ")");
+
+    const x = d3
+      .scaleBand()
+      .range([0, 700])
+      .domain(sessions.map((elt, index) => index))
+      .padding(0.2);
+
+    chartElt
+      .append("g")
+      .attr("transform", "translate(0," + 100 + ")")
+      .call(d3.axisBottom(x));
+
+    const y = d3.scaleLinear().domain([68, 70]).range([100, 0]);
+
+    chartElt
+      .append("g")
+      .attr("transform", "translate(" + 700 + "," + 0 + ")")
+      .call(
+        d3.axisRight(y).tickValues([68, 69, 70]).tickFormat(d3.format("d"))
+      );
 
     chartElt
       .selectAll("rect")
       .data(sessions)
       .enter()
       .append("rect")
-      .attr("x", (elt, index) => index * 84)
-      .attr("y", (elt, index) => 250)
+      .attr("x", (elt, index) => x(index))
+      .attr("y", (elt, index) => y(elt.kilogram))
       .attr("width", 7)
-      .attr("height", (elt, index) => (elt.kilogram - 68) * 100)
+      .attr("height", function (elt, index) {
+        return 100 - y(elt.kilogram);
+      })
       .attr("fill", "#000");
   }
 
