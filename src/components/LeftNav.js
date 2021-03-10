@@ -38,10 +38,10 @@ class LeftNav extends Component {
     return (
       <NAV>
         <GROUP>
-          <NavIcon path="/user" title="User Link" src="./images/icon-1.png" />
-          <NavIcon path="/user" title="User Link" src="./images/icon-2.png" />
-          <NavIcon path="/user" title="User Link" src="./images/icon-3.png" />
-          <NavIcon path="/user" title="User Link" src="./images/icon-4.png" />
+          <NavIcon path="/user" title="User Link" src="/./images/icon-1.png" />
+          <NavIcon path="/user" title="User Link" src="/./images/icon-2.png" />
+          <NavIcon path="/user" title="User Link" src="/./images/icon-3.png" />
+          <NavIcon path="/user" title="User Link" src="/./images/icon-4.png" />
         </GROUP>
         <COPYRIGHT>Copiryght, SportSee 2020</COPYRIGHT>
       </NAV>

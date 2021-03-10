@@ -20,13 +20,11 @@ class ChartGoals extends Component {
     };
 
     this.updateUserAverageSessions = this.updateUserAverageSessions.bind(this);
-    this.updateChart = this.updateChart.bind(this);
-
     this.chart = React.createRef();
   }
 
   componentDidMount() {
-    getUserAverageSession(this.updateUserAverageSessions);
+    getUserAverageSession(this.updateUserAverageSessions, this.props.idParam);
   }
 
   updateUserAverageSessions(data) {
@@ -34,13 +32,6 @@ class ChartGoals extends Component {
       id: data.userId,
       averageSessions: data.sessions,
     });
-    this.updateChart();
-  }
-
-  updateChart() {
-    const { id, averageSessions } = this.state;
-    console.log("Chart Goals: ", id);
-    console.log("Chart Goals: ", averageSessions);
   }
 
   render() {

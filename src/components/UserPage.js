@@ -11,12 +11,14 @@ const MAIN = styled.main`
 
 class UserPage extends Component {
   render() {
+    const idParam = this.props.match.params.id;
+
     return (
       <div className="user-page">
         <TopNav />
         <MAIN>
           <LeftNav />
-          <Dashboard />
+          <Dashboard idParam={idParam} />
         </MAIN>
       </div>
     );

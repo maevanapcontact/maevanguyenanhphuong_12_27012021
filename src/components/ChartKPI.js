@@ -20,13 +20,11 @@ class ChartKPI extends Component {
     };
 
     this.updateUserDetails = this.updateUserDetails.bind(this);
-    this.updateChart = this.updateChart.bind(this);
-
     this.chart = React.createRef();
   }
 
   componentDidMount() {
-    getUserDetails(this.updateUserDetails);
+    getUserDetails(this.updateUserDetails, this.props.idParam);
   }
 
   updateUserDetails(data) {
@@ -34,13 +32,6 @@ class ChartKPI extends Component {
       id: data.id,
       todayScore: data.todayScore || data.score,
     });
-    this.updateChart();
-  }
-
-  updateChart() {
-    const { id, todayScore } = this.state;
-    console.log("Chart KPI: ", id);
-    console.log("Chart KPI: ", todayScore);
   }
 
   render() {

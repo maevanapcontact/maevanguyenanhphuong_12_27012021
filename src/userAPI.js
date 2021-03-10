@@ -5,8 +5,8 @@
  *
  * @return  {void}
  */
-const getUserDetails = (resolve) => {
-  fetch("http://localhost:3000/user/18")
+const getUserDetails = (resolve, id) => {
+  fetch(`http://localhost:3000/user/${id}`)
     .then((response) => response.json())
     .then((result) => resolve(result.data))
     .catch((error) => console.log("Error: ", error));
@@ -19,8 +19,8 @@ const getUserDetails = (resolve) => {
  *
  * @return  {void}
  */
-const getUserActivity = (resolve) => {
-  fetch("http://localhost:3000/user/18/activity")
+const getUserActivity = (resolve, id) => {
+  fetch(`http://localhost:3000/user/${id}/activity`)
     .then((response) => response.json())
     .then((result) => resolve(result.data))
     .catch((error) => console.log("Error: ", error));
@@ -33,8 +33,8 @@ const getUserActivity = (resolve) => {
  *
  * @return  {void}
  */
-const getUserAverageSession = (resolve) => {
-  fetch("http://localhost:3000/user/18/average-sessions")
+const getUserAverageSession = (resolve, id) => {
+  fetch(`http://localhost:3000/user/${id}/average-sessions`)
     .then((response) => response.json())
     .then((result) => resolve(result.data))
     .catch((error) => console.log("Error: ", error));
@@ -47,8 +47,8 @@ const getUserAverageSession = (resolve) => {
  *
  * @return  {void}
  */
-const getUserPerformance = (resolve) => {
-  fetch("http://localhost:3000/user/18/performance")
+const getUserPerformance = (resolve, id) => {
+  fetch(`http://localhost:3000/user/${id}/performance`)
     .then((response) => response.json())
     .then((result) => resolve(result.data))
     .catch((error) => console.log("Error: ", error));

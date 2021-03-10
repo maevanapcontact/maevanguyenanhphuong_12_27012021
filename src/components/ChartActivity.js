@@ -59,7 +59,7 @@ class ChartActivity extends Component {
   }
 
   componentDidMount() {
-    getUserActivity(this.updateUserActivity);
+    getUserActivity(this.updateUserActivity, this.props.idParam);
   }
 
   updateUserActivity(data) {
@@ -71,9 +71,7 @@ class ChartActivity extends Component {
   }
 
   updateChart() {
-    const { id, sessions } = this.state;
-    console.log("Chart Activity: ", id);
-    console.log("Chart Activity: ", sessions);
+    const { sessions } = this.state;
 
     const chartElt = d3
       .select(this.chart.current)

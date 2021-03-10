@@ -21,13 +21,11 @@ class ChartRadar extends Component {
     };
 
     this.updateUserPerformance = this.updateUserPerformance.bind(this);
-    this.updateChart = this.updateChart.bind(this);
-
     this.chart = React.createRef();
   }
 
   componentDidMount() {
-    getUserPerformance(this.updateUserPerformance);
+    getUserPerformance(this.updateUserPerformance, this.props.idParam);
   }
 
   updateUserPerformance(data) {
@@ -36,14 +34,6 @@ class ChartRadar extends Component {
       kind: data.kind,
       data: data.data,
     });
-    this.updateChart();
-  }
-
-  updateChart() {
-    const { id, kind, data } = this.state;
-    console.log("Chart Radar: ", id);
-    console.log("Chart Radar: ", kind);
-    console.log("Chart Radar: ", data);
   }
 
   render() {

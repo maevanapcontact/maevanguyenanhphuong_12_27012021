@@ -36,7 +36,7 @@ class TopNav extends Component {
         <UL>
           <li>
             <LINK to="/user" title="Homepage">
-              <IMG src="./images/logo.png" alt="SportSee" />
+              <IMG src="/./images/logo.png" alt="SportSee" />
             </LINK>
           </li>
           <li>
