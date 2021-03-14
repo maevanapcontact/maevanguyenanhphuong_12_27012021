@@ -109,6 +109,7 @@ class ChartActivity extends Component {
       .attr("x", (elt, index) => x(index))
       .attr("y", (elt, index) => y(elt.kilogram))
       .attr("width", 7)
+      .attr("rx", 3)
       .attr("height", function (elt, index) {
         return 100 - y(elt.kilogram);
       })
