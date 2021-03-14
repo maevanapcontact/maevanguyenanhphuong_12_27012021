@@ -82,10 +82,11 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    getUserDetails(this.updateUserDetails);
-    getUserActivity(this.updateUserActivity);
-    getUserAverageSession(this.updateUserAverageSession);
-    getUserPerformance(this.updateUserPerformance);
+    const { idParam } = this.props;
+    getUserDetails(this.updateUserDetails, idParam);
+    getUserActivity(this.updateUserActivity, idParam);
+    getUserAverageSession(this.updateUserAverageSession, idParam);
+    getUserPerformance(this.updateUserPerformance, idParam);
   }
 
   updateUserDetails(data) {
@@ -124,6 +125,7 @@ class Dashboard extends Component {
       carbohydrateCount,
       lipidCount,
     } = keyData;
+    const { idParam } = this.props;
 
     return (
       <CONTAINER>
@@ -135,37 +137,37 @@ class Dashboard extends Component {
         </HEADER>
         <CONTENT>
           <section>
-            <ChartActivity />
+            <ChartActivity idParam={idParam} />
             <GROUP>
-              <ChartGoals />
-              <ChartRadar />
-              <ChartKPI />
+              <ChartGoals idParam={idParam} />
+              <ChartRadar idParam={idParam} />
+              <ChartKPI idParam={idParam} />
             </GROUP>
           </section>
           <aside>
             <DataTag
-              src="./images/energy.png"
+              src="/./images/energy.png"
               title="Energy"
               data={`${calorieCount}kCal`}
               type="Calories"
               color="#fbeaea"
             />
             <DataTag
-              src="./images/chicken.png"
+              src="/./images/chicken.png"
               title="Protéines"
               data={`${proteinCount}g`}
               type="Protéines"
               color="#e9f4fb"
             />
             <DataTag
-              src="./images/apple.png"
+              src="/./images/apple.png"
               title="Glucides"
               data={`${carbohydrateCount}g`}
               type="Glucides"
               color="#fbf6e5"
             />
             <DataTag
-              src="./images/cheeseburger.png"
+              src="/./images/cheeseburger.png"
               title="Lipides"
               data={`${lipidCount}g`}
               type="Lipides"
