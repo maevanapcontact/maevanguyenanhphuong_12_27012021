@@ -61,7 +61,6 @@ class ChartGoals extends Component {
     const { averageSessions } = this.state;
     const height = 150;
     const width = 258;
-    console.log(averageSessions);
 
     const chartElt = d3
       .select(this.chart.current)
